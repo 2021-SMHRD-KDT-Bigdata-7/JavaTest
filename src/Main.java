@@ -7,10 +7,10 @@ public class Main {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		String title;
-		String singer;
-		int playTime;
+		
 		System.out.println("====뮤직플레이어====");
+		MusicController mk = new MusicController();
+		
 		int a = 0;
 		while (a < 6) {
 			System.out.println("1. 등록 2. 목록 3.실행 4. 이전곡 5.다음곡 6. 종료");
@@ -24,8 +24,7 @@ public class Main {
 				singer = sc.next();
 				System.out.print("시간: ");
 				playTime = sc.nextInt();
-				MusicController mk = new MusicController(title,singer,playTime);
-			    mk.list(mk);    
+			    mk.ist(mk);    
 				if (mk != null) {
 					System.out.println("등록에 성공하셨습니다");
 				} else {
@@ -33,22 +32,19 @@ public class Main {
 				}
 				break;
 			case 2:
-				ArrayList< MusicController> list = mv.selectAll();
-				for(int i=0; i<list.size(); i++) {
-					System.out.println(list.get(i).getTitle() + " / "+ list.get(i).getSinger()+" / "+list.get(i).getPlayTime());
-				}
+				mk.List();
+				
 				break;
 			case 3:
-				MusicController nowMusic = mp.play();
-				System.out.println(nowMusic.getTitle()+"\t"+nowMusic.getSinger()+"\t"+nowMusic.getPlayTime());
+				mk.play();
 				break;
 			case 4:
-				MusicController preMusic = mp.pre();
-				System.out.println(play);
+				mk.pre();
+				
 				break;
 			case 5:
-				MusicController nextMusic = mp.next();
-				System.out.println(list.toArray());
+				mk.next();
+				
 				break;
 			case 6:
 				System.out.println("프로그램 종료");
