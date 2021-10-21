@@ -36,7 +36,7 @@ public class MusicVO {
 	}
 	
 	public String toString() {
-		
+		return "제목 : "+ title+"\t 가수 : "+singer+"\t 시간 : "+ playTime;
 	}
 
 }
