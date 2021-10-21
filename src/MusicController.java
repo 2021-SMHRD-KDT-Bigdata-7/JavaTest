@@ -37,7 +37,7 @@ public class MusicController {
 		System.out.println("====´ÙÀ½°î====");
 		index++;
 		if (index > musiclist.size()-1) {			
-			index = 0;
+			index--;
 		} 
 		print(index);
 		
@@ -49,7 +49,7 @@ public class MusicController {
 		System.out.println("====ÀÌÀü°î====");
 		index--;
 		if (index < 0) {
-			index = musiclist.size()-1;
+			index++;
 		} 
 		print(index);
 		System.out.println("=============\n");
