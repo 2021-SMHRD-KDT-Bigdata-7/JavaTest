@@ -34,8 +34,7 @@ public class MusicController {
 		}
 	
 	public MusicVO next() {
-		//0 1 2 3 -> 0 1 2 3 -> 0
-		if(index < musiclist.size()-1) {	//0, 1, 2번일때는 다음곡으로   3이 들어가면 4로 X
+		if(index < musiclist.size()-1) {
 			index++;
 		}else {
 			index = 0;
