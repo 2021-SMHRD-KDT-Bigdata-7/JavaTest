@@ -1,50 +1,64 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import ex01.Music;
-import 연습.MusicVO;
-
 public class MusicController {
 	Scanner sc = new Scanner(System.in);
-	
-	ArrayList<MusicVO> musiclist = new ArrayList<>();
-	
-	int index = 0;
-	
-	
-	
-	public MusicController() {
-		musiclist.add(new MusicVO("유리구슬", "여자친구", 320));
-		musiclist.add(new MusicVO("뱅뱅뱅", "빅뱅", 201));
-		musiclist.add(new MusicVO("주인공", "선미", 220));
-	}
-	
-	public void List() {
-		for(int i=0 ; musiclist.size(); i++)
-		System.out.println("");
-	}
-	
-	public MusicVO play() {
-		return musiclist.get(index);
-	}
-	
 
-	public MusicVO pre(){
-		if(index > 0) {
-			index--;
-		}else {
-			index = 0;
-		}
-		return musiclist.get(index);
-		}
-	
-	public MusicVO next() {
+	ArrayList<MusicVO> musiclist = new ArrayList<>();
+
+	int index = 0;
+
+	public MusicController() {
 		
-		if(index < musiclist.size()-1) {
-			index++;
-		}else {
-			index = musiclist.size();
+	}
+
+	// 등록
+	public void register(MusicVO mv) {
+		musiclist.add(mv);
+
+	}
+
+	// 목록
+	public void list() {
+		System.out.println("====노래목록====");
+		for (int i = 0; i < musiclist.size(); i++) {
+			print(i);
 		}
-		return musiclist.get(index);
+		System.out.println("=============\n");
+	}
+
+	public void play() {
+		System.out.println("====실행====");
+		print(index);
+		System.out.println("=============\n");
+	}
+
+	public void next() {
+		System.out.println("====다음곡====");
+		index++;
+		if (index > musiclist.size()-1) {			
+			index = 0;
+		} 
+		print(index);
+		
+		System.out.println("=============\n");
+
+	}
+
+	public void pre() {
+		System.out.println("====이전곡====");
+		index--;
+		if (index < 0) {
+			index = musiclist.size()-1;
+		} 
+		print(index);
+		System.out.println("=============\n");
+
+	}
+
+	public void print(int i) {
+		System.out.println((i + 1) + ". 제목 : " + musiclist.get(i).getTitle() + "\t" + "가수 : "
+				+ musiclist.get(i).getSinger() + "\t" + "시간 : " + musiclist.get(i).getPlayTime() + "초");
+	
 	}
 }

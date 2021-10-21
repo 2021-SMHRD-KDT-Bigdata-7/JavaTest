@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import LIbrary.BookVo;
-
 public class Main {
 
 	public static void main(String[] args) {
@@ -11,11 +9,13 @@ public class Main {
 		String singer;
 		int playTime;
 		MusicController mp = new MusicController();
+			
 		System.out.println("====뮤직플레이어====");
 		int a = 0;
-		while (a < 6) {
-			System.out.println("1. 등록 2. 목록 3.실행 4. 이전곡 5.다음곡 6. 종료");
+		while (!(a == 6)) {
+			System.out.print("1. 등록 2. 목록 3.실행 4. 이전곡 5.다음곡 6. 종료 >> ");
 			a = sc.nextInt();
+		
 
 			switch (a) {
 			case 1:
@@ -25,33 +25,31 @@ public class Main {
 				singer = sc.next();
 				System.out.print("시간: ");
 				playTime = sc.nextInt();
-				MusicVO mk = new MusicVO(title,singer,playTime);    
-				if (mk != null) {
-					System.out.println("등록에 성공하셨습니다");
-				} else {
-					System.out.println("정보를 똑바로 확인하십시오");
-				}
+				MusicVO mk = new MusicVO(title,singer,playTime);
+				
+				mp.register(mk);
+				
 				break;
 			case 2:
-				MusicController List = mp.List();
+				mp.list();
+				
 				break;
 			case 3:
-				MusicController nowMusic = mp.play();
-				System.out.println(musiclist.get());
+				mp.play();
+				
 				break;
 			case 4:
-				MusicController preMusic = mp.pre();
-				System.out.println(play);
+				mp.pre();
 				break;
 			case 5:
-				MusicController nextMusic = mp.next();
-				System.out.println(play);
+				mp.next();
 				break;
 			case 6:
 				System.out.println("프로그램 종료");
 				break;
 			default:
 				System.out.println("정확한 숫자를 입력해주세요");
+				a=0;
 				break;
 			}
 
